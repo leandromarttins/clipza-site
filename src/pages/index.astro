@@ -1,0 +1,472 @@
+---
+import Base from '../layouts/Base.astro'
+
+const features = [
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" x2="21" y1="6" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`,
+    title: 'Pedidos & Leads',
+    desc: 'Gerencie orçamentos, leads e pedidos com campos dinâmicos por tipo de serviço — foto, filme, reel e mais.',
+    color: 'blue',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+    title: 'Contratos Digitais',
+    desc: 'Crie, envie e assine contratos online. Templates personalizáveis com assinatura digital integrada.',
+    color: 'purple',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="1" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    title: 'Financeiro',
+    desc: 'Controle parcelas, comissões, receitas e despesas. Relatórios completos para sua gestão financeira.',
+    color: 'green',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>`,
+    title: 'Galeria Alta',
+    desc: 'Entregue fotos e filmes em alta resolução diretamente para o cliente. Upload seguro via R2, download organizado.',
+    color: 'pink',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>`,
+    title: 'Diagramador de Álbum',
+    desc: 'Monte álbuns no canvas, envie para aprovação do cliente online. Workflow completo sem sair do sistema.',
+    color: 'orange',
+  },
+  {
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+    title: 'Analytics & Relatórios',
+    desc: 'Dashboard com Google Analytics integrado, relatórios financeiros e BI para tomar decisões com dados.',
+    color: 'indigo',
+  },
+]
+
+const plans = [
+  {
+    id: 'starter',
+    name: 'Starter',
+    price: 97,
+    desc: 'Para quem está começando',
+    features: ['Pedidos e leads ilimitados', 'Contratos digitais', 'Módulo financeiro', 'Agenda de eventos', 'Progresso do cliente', '1 usuário'],
+    cta: 'Começar trial gratuito',
+    highlight: false,
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    price: 197,
+    desc: 'Para estúdios em crescimento',
+    features: ['Tudo do Starter', 'Galeria Alta de entrega', 'Diagramador de álbum', 'Questionário do evento', 'Formulário completo', 'Até 3 usuários'],
+    cta: 'Começar trial gratuito',
+    highlight: true,
+  },
+  {
+    id: 'studio',
+    name: 'Studio',
+    price: 297,
+    desc: 'Para equipes e estúdios maiores',
+    features: ['Tudo do Pro', 'Social Media Manager', 'Analytics GA4 integrado', 'Usuários ilimitados', 'Suporte prioritário', 'API de acesso'],
+    cta: 'Falar com vendas',
+    highlight: false,
+  },
+]
+
+const faqs = [
+  {
+    q: 'O que acontece após os 14 dias de trial?',
+    a: 'Você pode assinar qualquer plano para continuar. Se não assinar, seu acesso é pausado mas todos os seus dados ficam salvos por 30 dias.',
+  },
+  {
+    q: 'Preciso de cartão de crédito para começar?',
+    a: 'Não. O trial de 14 dias é completamente gratuito, sem necessidade de dados de pagamento.',
+  },
+  {
+    q: 'Posso importar meus dados de outro sistema?',
+    a: 'Sim. Temos importador compatível com Clicster e planilhas CSV para clientes, pedidos e financeiro.',
+  },
+  {
+    q: 'O sistema funciona para videomakers também?',
+    a: 'Sim. O CLIPZA foi construído para fotógrafos E videomakers — com campos específicos para filmes de casamento, vídeos corporativos, reels e mais.',
+  },
+  {
+    q: 'Meus dados ficam seguros?',
+    a: 'Todos os dados são armazenados no Supabase (infraestrutura AWS) com backups automáticos. Conformidade com LGPD garantida.',
+  },
+]
+
+const colorMap: Record<string, { bg: string; text: string; border: string }> = {
+  blue:   { bg: 'bg-blue-500/10',   text: 'text-blue-400',   border: 'border-blue-500/20' },
+  purple: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20' },
+  green:  { bg: 'bg-emerald-500/10',text: 'text-emerald-400',border: 'border-emerald-500/20' },
+  pink:   { bg: 'bg-pink-500/10',   text: 'text-pink-400',   border: 'border-pink-500/20' },
+  orange: { bg: 'bg-orange-500/10', text: 'text-orange-400', border: 'border-orange-500/20' },
+  indigo: { bg: 'bg-indigo-500/10', text: 'text-indigo-400', border: 'border-indigo-500/20' },
+}
+---
+
+<Base>
+
+<!-- ─── NAV ─────────────────────────────────────────────────────────────── -->
+<header class="fixed top-0 left-0 right-0 z-50">
+  <div class="mx-auto max-w-6xl px-4 py-4">
+    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl px-5 py-3 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+          <span class="text-white text-xs font-black tracking-tight">CZ</span>
+        </div>
+        <span class="text-white font-black text-base tracking-tight">CLIPZA</span>
+      </a>
+
+      <!-- Links desktop -->
+      <nav class="hidden md:flex items-center gap-6 text-sm text-white/60 font-medium">
+        <a href="#features" class="hover:text-white transition-colors">Funcionalidades</a>
+        <a href="#pricing" class="hover:text-white transition-colors">Planos</a>
+        <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+      </nav>
+
+      <!-- CTAs -->
+      <div class="flex items-center gap-2">
+        <a href="https://app.clipza.com.br/login"
+           class="hidden sm:block px-4 py-2 text-sm text-white/70 hover:text-white font-medium transition-colors">
+          Entrar
+        </a>
+        <a href="https://app.clipza.com.br/signup"
+           class="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white text-sm font-semibold rounded-xl transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-400/30">
+          Começar grátis
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16">
+  <!-- Background glow -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+    <div class="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-purple-600/8 rounded-full blur-[100px]"></div>
+    <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-pink-600/8 rounded-full blur-[100px]"></div>
+    <!-- Grid pattern -->
+    <div class="absolute inset-0 opacity-[0.03]"
+         style="background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px); background-size: 60px 60px;"></div>
+  </div>
+
+  <div class="relative max-w-5xl mx-auto px-4 text-center">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 text-sm text-blue-300 font-medium mb-8">
+      <span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></span>
+      Agora em beta — acesso gratuito por tempo limitado
+    </div>
+
+    <!-- Headline -->
+    <h1 class="text-5xl sm:text-6xl md:text-7xl font-black text-white leading-[1.05] tracking-tight mb-6">
+      Tudo que seu estúdio<br />
+      precisa.<br />
+      <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        Em um só lugar.
+      </span>
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto mb-10 leading-relaxed">
+      O CRM feito para <strong class="text-white/80">fotógrafos e videomakers</strong> que organiza pedidos, contratos, financeiro, galeria de entrega e muito mais. Do lead ao álbum entregue.
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <a href="https://app.clipza.com.br/signup"
+         class="w-full sm:w-auto px-8 py-4 bg-blue-500 hover:bg-blue-400 text-white font-bold text-base rounded-2xl transition-all shadow-xl shadow-blue-500/30 hover:shadow-blue-400/40 hover:-translate-y-0.5">
+        Começar trial gratuito — 14 dias
+      </a>
+      <a href="#features"
+         class="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 hover:text-white font-semibold text-base rounded-2xl transition-all">
+        Ver funcionalidades →
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-6 max-w-sm mx-auto">
+      {[
+        { n: '14', label: 'dias grátis' },
+        { n: '6+', label: 'tipos de serviço' },
+        { n: '100%', label: 'dados seguros' },
+      ].map(s => (
+        <div class="text-center">
+          <p class="text-2xl font-black text-white">{s.n}</p>
+          <p class="text-xs text-white/40 mt-0.5">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── APP PREVIEW ────────────────────────────────────────────────────────── -->
+<section class="relative py-12 px-4 overflow-hidden">
+  <div class="max-w-5xl mx-auto">
+    <div class="relative rounded-3xl border border-white/10 overflow-hidden bg-[#0d1424] shadow-2xl shadow-black/50">
+      <!-- Fake browser bar -->
+      <div class="flex items-center gap-2 px-4 py-3 bg-white/5 border-b border-white/10">
+        <div class="flex gap-1.5">
+          <div class="w-3 h-3 rounded-full bg-red-500/60"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500/60"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500/60"></div>
+        </div>
+        <div class="flex-1 mx-4">
+          <div class="bg-white/5 rounded-lg px-3 py-1 text-xs text-white/30 max-w-xs mx-auto text-center">
+            app.clipza.com.br/admin
+          </div>
+        </div>
+      </div>
+      <!-- Dashboard preview (CSS mockup) -->
+      <div class="p-6 min-h-[320px] flex flex-col gap-4">
+        <!-- Top stats row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { label: 'Pedidos ativos', val: '24', color: 'text-blue-400' },
+            { label: 'Receita do mês', val: 'R$18.4k', color: 'text-emerald-400' },
+            { label: 'Contratos pendentes', val: '7', color: 'text-amber-400' },
+            { label: 'Eventos este mês', val: '12', color: 'text-purple-400' },
+          ].map(s => (
+            <div class="bg-white/5 border border-white/8 rounded-xl p-3">
+              <p class={`text-xl font-black ${s.color}`}>{s.val}</p>
+              <p class="text-[11px] text-white/40 mt-0.5">{s.label}</p>
+            </div>
+          ))}
+        </div>
+        <!-- Recent orders -->
+        <div class="bg-white/5 border border-white/8 rounded-xl p-4 flex-1">
+          <p class="text-xs font-semibold text-white/50 mb-3 uppercase tracking-wider">Pedidos recentes</p>
+          <div class="space-y-2">
+            {[
+              { nome: 'Ana & Carlos — Casamento', tipo: 'Foto + Filme', valor: 'R$8.500', status: 'Contrato assinado', cor: 'bg-emerald-500' },
+              { nome: 'Tech Corp — Vídeo Corporativo', tipo: 'Vídeo Corporativo', valor: 'R$3.200', status: 'Aguardando pagamento', cor: 'bg-amber-500' },
+              { nome: 'Julia Mendes — 15 Anos', tipo: 'Debutante', valor: 'R$2.800', status: 'Galeria entregue', cor: 'bg-blue-500' },
+            ].map(r => (
+              <div class="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                <div class="flex items-center gap-2">
+                  <div class={`w-2 h-2 rounded-full ${r.cor}`}></div>
+                  <div>
+                    <p class="text-xs font-medium text-white/80">{r.nome}</p>
+                    <p class="text-[10px] text-white/30">{r.tipo}</p>
+                  </div>
+                </div>
+                <div class="text-right hidden sm:block">
+                  <p class="text-xs font-semibold text-white/70">{r.valor}</p>
+                  <p class="text-[10px] text-white/30">{r.status}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOCIAL PROOF ───────────────────────────────────────────────────────── -->
+<section class="py-16 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-sm text-white/30 uppercase tracking-widest font-semibold mb-8">Feito para criadores visuais</p>
+    <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+      {['Fotografia de Casamento', 'Filme de Casamento', 'Vídeo Corporativo', 'Videoclipe', 'Documentário', 'Reels & Conteúdo'].map(t => (
+        <div class="flex items-center gap-2 text-white/30 hover:text-white/60 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="text-sm font-medium">{t}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ──────────────────────────────────────────────────────────── -->
+<section id="features" class="py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+        Tudo que você precisa<br />
+        <span class="text-white/40">sem o que você não precisa</span>
+      </h2>
+      <p class="text-white/50 text-lg max-w-xl mx-auto">
+        Cada módulo foi desenhado especificamente para o fluxo de trabalho de fotógrafos e videomakers.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {features.map(f => {
+        const c = colorMap[f.color]
+        return (
+          <div class={`group relative bg-white/[0.03] hover:bg-white/[0.06] border ${c.border} rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1`}>
+            <div class={`w-11 h-11 ${c.bg} ${c.text} rounded-xl flex items-center justify-center mb-4`} set:html={f.icon} />
+            <h3 class="text-base font-bold text-white mb-2">{f.title}</h3>
+            <p class="text-sm text-white/50 leading-relaxed">{f.desc}</p>
+          </div>
+        )
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ───────────────────────────────────────────────────────── -->
+<section class="py-20 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-black text-white mb-4 tracking-tight">Do lead à entrega<br /><span class="text-white/40">em um único sistema</span></h2>
+    </div>
+    <div class="relative">
+      <!-- Line -->
+      <div class="absolute left-[19px] top-0 bottom-0 w-px bg-white/10 hidden sm:block"></div>
+      <div class="space-y-8">
+        {[
+          { n: '01', t: 'Lead chega pelo site ou indicação', d: 'Cadastre o contato, registre o orçamento e acompanhe o funil de vendas com status visual.' },
+          { n: '02', t: 'Pedido criado e contrato enviado', d: 'Gere o contrato com um clique, envie por link e acompanhe a assinatura em tempo real.' },
+          { n: '03', t: 'Evento acontece', d: 'Agenda integrada, questionário de briefing preenchido pelo cliente, checklist de equipamentos.' },
+          { n: '04', t: 'Edição e entrega', d: 'Suba as fotos e filmes na Galeria Alta. O cliente acessa e baixa pelo próprio link exclusivo.' },
+          { n: '05', t: 'Álbum aprovado', d: 'Monte o álbum no Diagramador, envie para aprovação online e confirme a impressão tudo pelo sistema.' },
+        ].map(step => (
+          <div class="flex gap-5 sm:gap-8">
+            <div class="flex-shrink-0 w-10 h-10 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-xs font-black text-blue-400 z-10">
+              {step.n}
+            </div>
+            <div class="pt-1.5 pb-4">
+              <h3 class="text-base font-bold text-white mb-1">{step.t}</h3>
+              <p class="text-sm text-white/50 leading-relaxed">{step.d}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ────────────────────────────────────────────────────────────── -->
+<section id="pricing" class="py-20 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <h2 class="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+        Preços simples e transparentes
+      </h2>
+      <p class="text-white/50 text-lg">
+        Comece grátis por 14 dias. Sem cartão de crédito.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {plans.map(p => (
+        <div class={`relative rounded-2xl p-6 flex flex-col ${
+          p.highlight
+            ? 'bg-blue-500/10 border-2 border-blue-500/40 shadow-2xl shadow-blue-500/10'
+            : 'bg-white/[0.03] border border-white/10'
+        }`}>
+          {p.highlight && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-blue-500 rounded-full text-xs font-bold text-white whitespace-nowrap">
+              Mais popular
+            </div>
+          )}
+          <div class="mb-5">
+            <h3 class={`text-lg font-black mb-1 ${p.highlight ? 'text-blue-300' : 'text-white'}`}>{p.name}</h3>
+            <p class="text-sm text-white/40">{p.desc}</p>
+          </div>
+          <div class="mb-6">
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-black text-white">R${p.price}</span>
+              <span class="text-white/40 text-sm">/mês</span>
+            </div>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            {p.features.map(f => (
+              <li class="flex items-start gap-2.5 text-sm text-white/60">
+                <svg class={`w-4 h-4 mt-0.5 flex-shrink-0 ${p.highlight ? 'text-blue-400' : 'text-emerald-400'}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="https://app.clipza.com.br/signup"
+             class={`block text-center py-3 rounded-xl text-sm font-bold transition-all ${
+               p.highlight
+                 ? 'bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/25'
+                 : 'bg-white/8 hover:bg-white/15 text-white border border-white/10'
+             }`}>
+            {p.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-white/30 text-sm mt-8">
+      Todos os planos incluem trial de 14 dias · Cancele quando quiser · Dados sempre preservados
+    </p>
+  </div>
+</section>
+
+<!-- ─── FAQ ─────────────────────────────────────────────────────────────────── -->
+<section id="faq" class="py-20 px-4">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-black text-white mb-4 tracking-tight">Perguntas frequentes</h2>
+    </div>
+    <div class="space-y-3">
+      {faqs.map((f, i) => (
+        <details class="group bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden">
+          <summary class="flex items-center justify-between p-5 cursor-pointer list-none text-white font-semibold text-sm hover:text-white/80 transition-colors">
+            {f.q}
+            <svg class="w-4 h-4 text-white/40 group-open:rotate-45 transition-transform duration-200 flex-shrink-0 ml-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="5" y2="19"/><line x1="5" x2="19" y1="12" y2="12"/></svg>
+          </summary>
+          <div class="px-5 pb-5 text-sm text-white/50 leading-relaxed border-t border-white/5 pt-4">
+            {f.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA FINAL ─────────────────────────────────────────────────────────── -->
+<section class="py-24 px-4">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="relative bg-gradient-to-br from-blue-600/20 to-purple-600/10 border border-white/10 rounded-3xl p-12 overflow-hidden">
+      <!-- Glow -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-blue-500/20 blur-3xl rounded-full"></div>
+
+      <div class="relative">
+        <div class="w-14 h-14 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-blue-500/30">
+          <span class="text-white text-lg font-black tracking-tight">CZ</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+          Pronto para organizar<br />seu estúdio?
+        </h2>
+        <p class="text-white/50 text-lg mb-8">
+          Comece hoje. Grátis por 14 dias, sem cartão de crédito.
+        </p>
+        <a href="https://app.clipza.com.br/signup"
+           class="inline-block px-10 py-4 bg-blue-500 hover:bg-blue-400 text-white font-bold text-base rounded-2xl transition-all shadow-xl shadow-blue-500/30 hover:shadow-blue-400/40 hover:-translate-y-0.5">
+          Criar conta gratuita →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+<footer class="py-10 px-4 border-t border-white/5">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <div class="w-7 h-7 bg-blue-500 rounded-lg flex items-center justify-center">
+          <span class="text-white text-[10px] font-black">CZ</span>
+        </div>
+        <span class="text-white/70 font-bold text-sm">CLIPZA</span>
+        <span class="text-white/20 text-xs">Studio CRM</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs text-white/30">
+        <a href="https://app.clipza.com.br/termos" class="hover:text-white/60 transition-colors">Termos de Uso</a>
+        <a href="https://app.clipza.com.br/privacidade" class="hover:text-white/60 transition-colors">Privacidade</a>
+        <a href="mailto:contato@clipza.com.br" class="hover:text-white/60 transition-colors">Contato</a>
+      </div>
+
+      <p class="text-xs text-white/20">© 2026 CLIPZA. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+</Base>
