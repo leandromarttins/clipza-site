@@ -1,0 +1,40 @@
+---
+interface Props {
+  class?: string;
+  showText?: boolean;
+}
+
+const { class: className = "w-8 h-8", showText = false } = Astro.props;
+---
+
+<div class={`flex items-center gap-2 ${className}`}>
+  <svg 
+    viewBox="0 0 100 100" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-full h-full"
+  >
+    {/* Outer Square Frame 
+        Slate profundo (#0F172A) no claro, Branco quente (#F8FAFC) no escuro */}
+    <path 
+      d="M 85 25 L 85 15 C 85 12 82 10 79 10 L 15 10 C 12 10 10 12 10 15 L 10 85 C 10 88 12 90 15 90 L 79 90 C 82 90 85 88 85 85 L 85 75" 
+      stroke="currentColor" 
+      stroke-width="10" 
+      stroke-linecap="round" 
+      class="text-[#0F172A] dark:text-[#F8FAFC]"
+    />
+    
+    {/* Play Button Icon
+        Ciano elétrico (#06B6D4) */}
+    <path 
+      d="M 42 28 L 42 72 C 42 74 44.5 75.5 46.5 74.5 L 84 52.5 C 86 51 86 49 84 47.5 L 46.5 25.5 C 44.5 24.5 42 26 42 28 Z" 
+      fill="#06B6D4" 
+    />
+  </svg>
+  
+  {showText && (
+    <span class="font-sans font-bold tracking-tight text-xl text-[#0F172A] dark:text-[#F8FAFC]">
+      CLIPZA
+    </span>
+  )}
+</div>
