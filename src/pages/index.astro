@@ -28,15 +28,9 @@ const features = [
     color: 'pink',
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>`,
-    title: 'Diagramador de Álbum',
-    desc: 'Monte álbuns no canvas, envie para aprovação do cliente online. Workflow completo sem sair do sistema.',
-    color: 'orange',
-  },
-  {
     icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
-    title: 'Analytics & Relatórios',
-    desc: 'Dashboard com Google Analytics integrado, relatórios financeiros e BI para tomar decisões com dados.',
+    title: 'Relatórios & BI',
+    desc: 'Relatórios financeiros completos e dashboards de BI para acompanhar a saúde do seu negócio.',
     color: 'indigo',
   },
 ]
@@ -56,7 +50,7 @@ const plans = [
     name: 'Pro',
     price: 197,
     desc: 'Para estúdios em crescimento',
-    features: ['Tudo do Starter', 'Galeria Alta de entrega', 'Diagramador de álbum', 'Questionário do evento', 'Formulário completo', 'Até 3 usuários'],
+    features: ['Tudo do Starter', 'Galeria Alta de entrega', 'Questionário do evento', 'Formulário completo', 'Até 3 usuários'],
     cta: 'Começar trial gratuito',
     highlight: true,
   },
@@ -65,7 +59,7 @@ const plans = [
     name: 'Studio',
     price: 297,
     desc: 'Para equipes e estúdios maiores',
-    features: ['Tudo do Pro', 'Social Media Manager', 'Analytics GA4 integrado', 'Usuários ilimitados', 'Suporte prioritário', 'API de acesso'],
+    features: ['Tudo do Pro', 'Social Media Manager', 'Usuários ilimitados', 'Suporte prioritário', 'API de acesso'],
     cta: 'Falar com vendas',
     highlight: false,
   },
@@ -320,7 +314,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string }> = {
           { n: '02', t: 'Pedido criado e contrato enviado', d: 'Gere o contrato com um clique, envie por link e acompanhe a assinatura em tempo real.' },
           { n: '03', t: 'Evento acontece', d: 'Agenda integrada, questionário de briefing preenchido pelo cliente, checklist de equipamentos.' },
           { n: '04', t: 'Edição e entrega', d: 'Suba as fotos e filmes na Galeria Alta. O cliente acessa e baixa pelo próprio link exclusivo.' },
-          { n: '05', t: 'Álbum aprovado', d: 'Monte o álbum no Diagramador, envie para aprovação online e confirme a impressão tudo pelo sistema.' },
+          { n: '05', t: 'Álbum aprovado', d: 'Envie o álbum para aprovação do cliente online e confirme a impressão tudo pelo sistema.' },
         ].map(step => (
           <div class="flex gap-5 sm:gap-8">
             <div class="flex-shrink-0 w-10 h-10 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-xs font-black text-blue-400 z-10">
