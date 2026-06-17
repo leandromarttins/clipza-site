@@ -7,6 +7,12 @@ const {
   title = 'CLIPZA — Studio CRM para Fotógrafos e Videomakers',
   description = 'Gerencie pedidos, contratos, financeiro, galeria de entrega e muito mais. O CRM feito para criadores visuais.',
 } = Astro.props
+// Pixel da Meta do Clipza — defina PUBLIC_FB_PIXEL_ID na Vercel quando criar o
+// Pixel "Clipza" (marca separada da fotografia). Sem env, o Pixel não carrega.
+const fbPixelId = import.meta.env.PUBLIC_FB_PIXEL_ID
+const fbPixelSnippet = fbPixelId
+  ? `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${fbPixelId}');fbq('track','PageView');`
+  : ""
 ---
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
@@ -36,6 +42,11 @@ const {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Meta (Facebook) Pixel — só carrega se PUBLIC_FB_PIXEL_ID estiver definido -->
+  {fbPixelId && (
+    <script is:inline set:html={fbPixelSnippet} />
+  )}
 </head>
 <body class="bg-[#060b14] text-white font-sans antialiased">
   <slot />
