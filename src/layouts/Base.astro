@@ -7,9 +7,9 @@ const {
   title = 'CLIPZA — Studio CRM para Fotógrafos e Videomakers',
   description = 'Gerencie pedidos, contratos, financeiro, galeria de entrega e muito mais. O CRM feito para criadores visuais.',
 } = Astro.props
-// Pixel da Meta do Clipza — defina PUBLIC_FB_PIXEL_ID na Vercel quando criar o
-// Pixel "Clipza" (marca separada da fotografia). Sem env, o Pixel não carrega.
-const fbPixelId = import.meta.env.PUBLIC_FB_PIXEL_ID
+// Pixel da Meta do Clipza ("Pixel Clipza", portfólio Clipza). ID público, não é
+// segredo; fallback garante o disparo mesmo sem env na Vercel (override por env).
+const fbPixelId = import.meta.env.PUBLIC_FB_PIXEL_ID || "1761852935189972"
 const fbPixelSnippet = fbPixelId
   ? `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${fbPixelId}');fbq('track','PageView');`
   : ""
@@ -50,5 +50,17 @@ const fbPixelSnippet = fbPixelId
 </head>
 <body class="bg-[#060b14] text-white font-sans antialiased">
   <slot />
+
+  {fbPixelId && (
+    <script is:inline>
+      // Clique nos CTAs de cadastro (→ /signup) dispara Lead no Pixel
+      document.addEventListener('click', function (e) {
+        var a = e.target && e.target.closest ? e.target.closest('a[href*="/signup"]') : null;
+        if (a && typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', { content_name: 'clipza_signup_cta' });
+        }
+      });
+    </script>
+  )}
 </body>
 </html>
